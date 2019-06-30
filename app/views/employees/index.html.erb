@@ -1,5 +1,14 @@
 <p id="notice"><%= notice %></p>
+<h2>Import Employees</h2>
 
+<%= form_tag import_employees_path, multipart: true do %>
+  <div class="field">
+    <%= label_tag :company_id %>
+    <%= select_tag("company_id", options_from_collection_for_select(Company.all, :id, :name))%>
+  </div>
+  <%= file_field_tag :file, id: 'csv_file', accept: 'text/csv',required: true %>
+  <%= submit_tag "Import" %>
+<% end %>
 <h1>Employees</h1>
 
 <table>
@@ -31,3 +40,5 @@
 <br>
 
 <%= link_to 'New Employee', new_employee_path %>
+<%= link_to 'Company List', companies_path %>
+<%= link_to 'Policy List', policies_path %>

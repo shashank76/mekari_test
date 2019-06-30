@@ -24,7 +24,8 @@ class EmployeesController < ApplicationController
   # POST /employees
   # POST /employees.json
   def create
-    @employee = Employee.new(employee_params)
+    @company = Company.find_by_id(params[:company_id])
+    @employee = @company.employees.new(employee_params)
 
     respond_to do |format|
       if @employee.save
@@ -59,6 +60,11 @@ class EmployeesController < ApplicationController
       format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    Employee.import(params[:file], params)
+    redirect_to root_url, notice: "Employees imported."
   end
 
   private
