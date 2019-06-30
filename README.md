@@ -38,3 +38,12 @@ User can upload employee data by going to a new page. This new page will have a 
 * You may install gems that you need
 * You may change the current implementation if needed or make assumptions you want.
 * Readme
+
+# Setup & configuration:
+* ruby '2.5.1'
+* rails '5.2.3'
+* rvm use ruby-2.5.1@global
+* gem install bundler
+* bundle install
+* rails db:setup (includes db:create db:migrate db:seed)
+* rails server and go to localhost:3000
